@@ -39,6 +39,7 @@ unsigned int gl_shader_create(const char *vs_src, const char *fs_src)
 	int success;
 	char info_log[2048];
 
+	printf("hi\n");
 	vs = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vs, 1, &vs_src, 0);
 	glCompileShader(vs);
@@ -46,7 +47,7 @@ unsigned int gl_shader_create(const char *vs_src, const char *fs_src)
 	if (!success)
 	{
 		glGetShaderInfoLog(vs, 2048, 0, info_log);
-		printf("vertex shader error: %s\n", info_log);
+		fprintf(stderr, "vertex shader error: %s\n", info_log);
 	}
 
 	fs = glCreateShader(GL_FRAGMENT_SHADER);
@@ -56,7 +57,7 @@ unsigned int gl_shader_create(const char *vs_src, const char *fs_src)
 	if (!success)
 	{
 		glGetShaderInfoLog(fs, 2048, 0, info_log);
-		printf("fragment shader error: %s\n", info_log);
+		fprintf(stderr, "fragment shader error: %s\n", info_log);
 	}
 
 	shd = glCreateProgram();
@@ -67,7 +68,7 @@ unsigned int gl_shader_create(const char *vs_src, const char *fs_src)
 	if (!success)
 	{
 		glGetProgramInfoLog(shd, 2048, 0, info_log);
-		printf("shader linking error: %s\n", info_log);
+		fprintf(stderr, "shader linking error: %s\n", info_log);
 	}
 
 	return shd;

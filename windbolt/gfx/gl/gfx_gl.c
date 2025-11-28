@@ -177,9 +177,10 @@ void gfx_init_sprite_atlas(Gfx_Image images[])
 
 void gfx_init_font(const char *font_path)
 {
-	u8 buffer[1<<20];
+	Arena font_file_arena = arena_create((1<<20) + (1024 * 1024));
+	u8 *buffer = arena_alloc(&font_file_arena, 1<<20);
 	fread(buffer, 1, 1<<20, fopen(font_path, "rb"));
-	u8 bitmap[1024 * 1024];
+	u8 *bitmap = arena_alloc(&font_file_arena, 1024 * 1024);
 
 	ASSERT(stbtt_BakeFontBitmap(buffer, 0, 128, bitmap, 1024, 1024, 32, 96, gfx_data.chardata) > 0, font_path);
 
@@ -192,6 +193,8 @@ void gfx_init_font(const char *font_path)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 1024, 1024, 0, GL_RED, GL_UNSIGNED_BYTE, bitmap);
+
+	arena_destroy(&font_file_arena);
 }
 
 void gfx_draw_rect(Vec2 position, Vec2 size, Vec4 color)

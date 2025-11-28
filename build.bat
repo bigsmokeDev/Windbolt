@@ -1,13 +1,8 @@
 :: this build.bat uses MinGW64
 @echo off
 
-IF "%1"=="" (
-	echo "usage: build.bat [RELEASE]"
-	exit /b
-)
-
 set CFLAGS=-std=c99 -Wall -Iwindbolt
-set LDFLAGS=-luser32 -ld3d11 -ldxgi -ld3dcompiler
+set LDFLAGS=-luser32 -lgdi32 -lopengl32
 
 set DEBUG_FLAGS=-O0 -g
 set RELEASE_FLAGS=-O3 -DNDEBUG

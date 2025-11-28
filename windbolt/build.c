@@ -14,6 +14,9 @@
 #include "os/xlib/os_xlib_window.c"
 #include "os/xlib/os_xlib_keys.c"
 #include "os/xlib/os_xlib_gl.c"
+#elif OS_WINDOWS
+#include "os/win32/os_win32_window.c"
+#include "os/win32/os_win32_gl.c"
 #endif
 
 //////
@@ -28,7 +31,5 @@
 // gfx
 #include "gfx/gfx.c"
 
-#if OS_LINUX
 #include "vendor/glad/glad.c"
 #include "gfx/gl/gfx_gl.c"
-#endif

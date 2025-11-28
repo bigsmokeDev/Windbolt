@@ -90,15 +90,10 @@ void os_gfx_init(void)
     
     glXMakeCurrent(os.dpy, os.window, glx_context);
 
-	gladLoadGLLoader((GLADloadproc)os_gfx_get_proc_address);
+	gladLoadGL();
 }
 
 void os_gfx_swap_buffers(void)
 {
 	glXSwapBuffers(os.dpy, os.window);
-}
-
-OS_ProcAddress os_gfx_get_proc_address(const char *name)
-{
-	return (OS_ProcAddress)glXGetProcAddress((const GLubyte*)name);
 }
