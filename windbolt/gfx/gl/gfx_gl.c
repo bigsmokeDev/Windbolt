@@ -111,17 +111,10 @@ void gfx_end(void)
 	glDrawElements(GL_TRIANGLES, gfx_data.quad_count * 6, GL_UNSIGNED_SHORT, 0);
 }
 
-void gfx_init_sprite_atlas(Gfx_Image images[])
+void gfx_init_sprite_atlas(Gfx_Image images[], u32 image_count)
 {
 	const u32 pixel_count = GFX_ATLAS_SIZE * GFX_ATLAS_SIZE * 4;
 	const u32 node_count = GFX_ATLAS_SIZE;
-
-	// NOTE(smoke): im getting cancelled for this one
-	u32 image_count = 0;
-	for (u32 i = 0; images[i].pixels; i++)
-	{
-		image_count++;
-	}
 
 	Arena atlas_arena = arena_create(pixel_count + (sizeof(stbrp_node) * node_count) + (sizeof(stbrp_rect) * image_count));
 	arena_reset(&atlas_arena);

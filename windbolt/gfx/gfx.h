@@ -48,7 +48,7 @@ global void gfx_resize(void);
 global void gfx_begin(Gfx_Camera *camera);
 global void gfx_end(void);
 
-global void gfx_init_sprite_atlas(Gfx_Image images[]);
+global void gfx_init_sprite_atlas(Gfx_Image images[], u32 image_count);
 global void gfx_init_font(const char *font_path);
 
 global void gfx_draw_rect(Vec2 position, Vec2 size, Vec4 color);

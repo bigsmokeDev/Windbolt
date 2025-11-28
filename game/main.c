@@ -13,9 +13,8 @@ int main(int argc, char *argv[])
 	Arena images_arena = arena_create(GFX_ATLAS_SIZE * GFX_ATLAS_SIZE * 4);
 	Gfx_Image images[] = {
 		gfx_image_create(&images_arena, "res/player.png"),
-		NULL
 	};
-	gfx_init_sprite_atlas(images);
+	gfx_init_sprite_atlas(images, 1);
 	arena_destroy(&images_arena);
 
 	gfx_init_font("res/font.ttf");
