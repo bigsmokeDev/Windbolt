@@ -39,7 +39,6 @@ unsigned int gl_shader_create(const char *vs_src, const char *fs_src)
 	int success;
 	char info_log[2048];
 
-	printf("hi\n");
 	vs = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vs, 1, &vs_src, 0);
 	glCompileShader(vs);

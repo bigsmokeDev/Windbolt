@@ -30,6 +30,7 @@
 ///////
 // gfx
 #include "gfx/gfx.c"
-
-#include "vendor/glad/glad.c"
 #include "gfx/gl/gfx_gl.c"
+
+/////////
+// audio

@@ -2,8 +2,6 @@
 
 // NOTE(smoke): graphics API independent code goes here
 
-#define STB_IMAGE_IMPLEMENTATION
-#define STBI_ONLY_PNG
 #include "vendor/stb/stb_image.h"
 
 /////////

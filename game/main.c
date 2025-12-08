@@ -4,6 +4,8 @@
 
 #include "gfx/gfx.h"
 
+#include "vendor/miniaudio/miniaudio.h"
+
 int main(int argc, char *argv[])
 {
 	os_window_init(800, 600, "from scratch");
@@ -23,6 +25,10 @@ int main(int argc, char *argv[])
 	camera.zoom = 1.0f;
 	Vec2 pos = v2_zero();
 	f32 current_time = 0.0f, delta_time = 0.0f, last_time = 0.0f;
+
+    ma_engine engine;
+    ma_result result = ma_engine_init(0, &engine);
+    ASSERT(result == MA_SUCCESS, "failed to init miniaudio");
 
 	while (!os_window_should_close())
 	{
@@ -47,6 +53,8 @@ int main(int argc, char *argv[])
 		os_gfx_swap_buffers();
 		os_input_update();
 	}
+
+    ma_engine_uninit(&engine);
 
 	os_window_shutdown();
 	return 0;
