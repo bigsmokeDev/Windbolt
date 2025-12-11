@@ -16,7 +16,7 @@ typedef struct
 	Vec4 uv; // NOTE(smoke): for sprite atlas
 } Gfx_Image;
 
-global Gfx_Image gfx_image_create(Arena *arena, const char *path);
+global Gfx_Image gfx_image_create(Arena *arena, const char *image_path);
 
 ///////////////
 // 2d renderer
@@ -48,8 +48,8 @@ global void gfx_resize(void);
 global void gfx_begin(Gfx_Camera *camera);
 global void gfx_end(void);
 
-global void gfx_init_sprite_atlas(Gfx_Image images[], u32 image_count);
-global void gfx_init_font(const char *font_path);
+global void gfx_sprite_atlas_init(Gfx_Image images[], u32 image_count);
+global void gfx_font_init(const char *font_path);
 
 global void gfx_draw_rect(Vec2 position, Vec2 size, Vec4 color);
 global void gfx_draw_sprite(Gfx_Image image, Vec2 position, Vec2 size);

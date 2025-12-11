@@ -32,5 +32,6 @@
 #include "gfx/gfx.c"
 #include "gfx/gl/gfx_gl.c"
 
-/////////
-// audio
+///////
+// sfx 
+#include "sfx/sfx.c"

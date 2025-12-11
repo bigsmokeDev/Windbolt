@@ -3,6 +3,7 @@
 #include "os/os_gfx.h"
 
 #include "gfx/gfx.h"
+#include "sfx/sfx.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,15 +15,20 @@ int main(int argc, char *argv[])
 	Gfx_Image images[] = {
 		gfx_image_create(&images_arena, "res/player.png"),
 	};
-	gfx_init_sprite_atlas(images, 1);
+	gfx_sprite_atlas_init(images, 1);
 	arena_destroy(&images_arena);
 
-	gfx_init_font("res/font.ttf");
+	gfx_font_init("res/font.ttf");
 
 	Gfx_Camera camera = {0};
 	camera.zoom = 1.0f;
 	Vec2 pos = v2_zero();
 	f32 current_time = 0.0f, delta_time = 0.0f, last_time = 0.0f;
+
+    sfx_init();
+    Sfx_Sound peace;
+    sfx_sound_init(&peace, "res/peace.wav");
+    sfx_sound_play(&peace);
 
 	while (!os_window_should_close())
 	{
@@ -48,6 +54,7 @@ int main(int argc, char *argv[])
 		os_input_update();
 	}
 
+    sfx_shutdown();
 	os_window_shutdown();
 	return 0;
 }

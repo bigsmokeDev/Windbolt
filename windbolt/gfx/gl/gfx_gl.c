@@ -109,7 +109,7 @@ void gfx_end(void)
 	glDrawElements(GL_TRIANGLES, gfx_data.quad_count * 6, GL_UNSIGNED_SHORT, 0);
 }
 
-void gfx_init_sprite_atlas(Gfx_Image images[], u32 image_count)
+void gfx_sprite_atlas_init(Gfx_Image images[], u32 image_count)
 {
 	const u32 pixel_count = GFX_ATLAS_SIZE * GFX_ATLAS_SIZE * 4;
 	const u32 node_count = GFX_ATLAS_SIZE;
@@ -166,14 +166,14 @@ void gfx_init_sprite_atlas(Gfx_Image images[], u32 image_count)
 	arena_destroy(&atlas_arena);
 }
 
-void gfx_init_font(const char *font_path)
+void gfx_font_init(const char *font_path)
 {
 	Arena font_file_arena = arena_create((1<<20) + (1024 * 1024));
 	u8 *buffer = arena_alloc(&font_file_arena, 1<<20);
 	fread(buffer, 1, 1<<20, fopen(font_path, "rb"));
 	u8 *bitmap = arena_alloc(&font_file_arena, 1024 * 1024);
 
-	ASSERT(stbtt_BakeFontBitmap(buffer, 0, 128, bitmap, 1024, 1024, 32, 96, gfx_data.chardata) > 0, font_path);
+	ASSERT(stbtt_BakeFontBitmap(buffer, 0, 128, bitmap, 1024, 1024, 32, 96, gfx_data.chardata) > 0, "failed to load %s\n", font_path);
 
 	glActiveTexture(GL_TEXTURE1);
 	u32 gl_texture;

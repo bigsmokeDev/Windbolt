@@ -1,4 +1,4 @@
-CC = cc
+CC = clang
 
 CFLAGS = -std=c99 -Wall -Iwindbolt -D_GNU_SOURCE
 LDFLAGS = -lX11 -lGLX -lGL -lm

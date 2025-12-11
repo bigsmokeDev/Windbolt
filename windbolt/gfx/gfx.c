@@ -6,12 +6,12 @@
 
 /////////
 // image
-Gfx_Image gfx_image_create(Arena *arena, const char *path)
+Gfx_Image gfx_image_create(Arena *arena, const char *image_path)
 {
 	Gfx_Image image = {0};
 
 	s32 width, height, channels;
-	u8 *pixels = stbi_load(path, &width, &height, &channels, 4);
+	u8 *pixels = stbi_load(image_path, &width, &height, &channels, 4);
 	ASSERT(pixels, "cannot find image");
 
 	image.pixels = arena_alloc(arena, width * height * channels);

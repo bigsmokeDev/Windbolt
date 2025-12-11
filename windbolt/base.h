@@ -10,6 +10,13 @@
 
 ////////////////////
 // custom assertion
-#define ASSERT(c,msg) if(!(c)){ fprintf(stderr, "assertion failure at %s:%i: %s\n", __FILE__, __LINE__, (msg)); abort(); }
+#define ASSERT(c,...)\
+    do {\
+        if (!(c)) {\
+            fprintf(stderr, "assertion failure at %s:%d: ", __FILE__, __LINE__);\
+            fprintf(stderr, ##__VA_ARGS__);\
+            abort();\
+        }\
+    } while (0)
 
 #endif // BASE_H
