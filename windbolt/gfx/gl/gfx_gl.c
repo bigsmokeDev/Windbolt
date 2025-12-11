@@ -243,3 +243,59 @@ void gfx_draw_text(const char *text, Vec2 position, f32 scale, Vec4 color)
         position.x += b->xadvance * scale;
     }
 }
+
+local void gfx_draw_rect_mat(Mat4 model, Vec4 color)
+{
+    ASSERT(gfx_data.quad_count < GFX_MAX_QUADS, "ran out of quads");
+
+    const Vec4 v[] = {
+        vec4_mul_mat4(v4(0.0f, 0.0f, 0.0f, 1.0f), model),
+        vec4_mul_mat4(v4(1.0f, 0.0f, 0.0f, 1.0f), model),
+        vec4_mul_mat4(v4(1.0f, 1.0f, 0.0f, 1.0f), model),
+        vec4_mul_mat4(v4(0.0f, 1.0f, 0.0f, 1.0f), model)
+    };
+
+    gfx_data.quads[gfx_data.quad_count][0] = (Gfx_Vertex){ { v[0].x, v[0].y }, color, v2_zero(), 0.0f };
+    gfx_data.quads[gfx_data.quad_count][1] = (Gfx_Vertex){ { v[1].x, v[1].y }, color, v2_zero(), 0.0f };
+    gfx_data.quads[gfx_data.quad_count][2] = (Gfx_Vertex){ { v[2].x, v[2].y }, color, v2_zero(), 0.0f };
+    gfx_data.quads[gfx_data.quad_count][3] = (Gfx_Vertex){ { v[3].x, v[3].y }, color, v2_zero(), 0.0f };
+    gfx_data.quad_count++;
+}
+
+local void gfx_draw_sprite_mat(Mat4 model, Gfx_Image image)
+{
+    ASSERT(gfx_data.quad_count < GFX_MAX_QUADS, "ran out of quads");
+
+    const Vec4 v[] = {
+        vec4_mul_mat4(v4(0.0f, 0.0f, 0.0f, 1.0f), model),
+        vec4_mul_mat4(v4(1.0f, 0.0f, 0.0f, 1.0f), model),
+        vec4_mul_mat4(v4(1.0f, 1.0f, 0.0f, 1.0f), model),
+        vec4_mul_mat4(v4(0.0f, 1.0f, 0.0f, 1.0f), model)
+    };
+
+    gfx_data.quads[gfx_data.quad_count][0] = (Gfx_Vertex){ { v[0].x, v[0].y }, v4_one(), { image.uv.x, image.uv.y }, 0.0f };
+    gfx_data.quads[gfx_data.quad_count][1] = (Gfx_Vertex){ { v[1].x, v[1].y }, v4_one(), { image.uv.x + image.uv.z, image.uv.y }, 0.0f };
+    gfx_data.quads[gfx_data.quad_count][2] = (Gfx_Vertex){ { v[2].x, v[2].y }, v4_one(), { image.uv.x + image.uv.z, image.uv.y + image.uv.w }, 0.0f };
+    gfx_data.quads[gfx_data.quad_count][3] = (Gfx_Vertex){ { v[3].x, v[3].y }, v4_one(), { image.uv.x, image.uv.y + image.uv.w }, 0.0f };
+    gfx_data.quad_count++;
+}
+
+void gfx_draw_rect_ex(Vec2 position, Vec2 size, Vec4 color, f32 rotation, Vec2 origin)
+{
+    Mat4 model = mat4_identity();
+    model = mat4_scale(model, size);
+    model = mat4_translate(model, vec2_scale(origin, -1.0f));
+    model = mat4_rotate_z(model, rotation);
+    model = mat4_translate(model, position);
+    gfx_draw_rect_mat(model, color);
+}
+
+void gfx_draw_sprite_ex(Gfx_Image image, Vec2 position, Vec2 size, f32 rotation, Vec2 origin)
+{
+    Mat4 model = mat4_identity();
+    model = mat4_scale(model, size);
+    model = mat4_translate(model, vec2_scale(origin, -1.0f));
+    model = mat4_rotate_z(model, rotation);
+    model = mat4_translate(model, position);
+    gfx_draw_sprite_mat(model, image);
+}

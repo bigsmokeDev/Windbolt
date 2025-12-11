@@ -87,6 +87,16 @@ f32 vec4_dot(Vec4 a, Vec4 b)
     return (a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w);
 }
 
+Vec4 vec4_mul_mat4(Vec4 vec, Mat4 mat)
+{
+    Vec4 result;
+    result.x = mat.m0*vec.x + mat.m4*vec.y + mat.m8*vec.z + mat.m12*vec.w;
+    result.y = mat.m1*vec.x + mat.m5*vec.y + mat.m9*vec.z + mat.m13*vec.w;
+    result.z = mat.m2*vec.x + mat.m6*vec.y + mat.m10*vec.z + mat.m14*vec.w;
+    result.w = mat.m3*vec.x + mat.m7*vec.y + mat.m11*vec.z + mat.m15*vec.w;
+    return result;
+}
+
 //////////////
 // 4x4 matrix
 Mat4 mat4_identity(void)

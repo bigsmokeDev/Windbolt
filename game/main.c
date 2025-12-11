@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
     Gfx_Camera camera = {0};
     camera.zoom = 1.0f;
-    Vec2 pos = v2_zero();
+    Vec2 pos = v2(50.0f, 50.0f);
     f32 current_time = 0.0f, delta_time = 0.0f, last_time = 0.0f;
 
     sfx_init();
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         gfx_resize();
 
         gfx_begin(&camera);
-        gfx_draw_sprite(images[0], pos, v2(50.0f, 50.0f));
+        gfx_draw_sprite_ex(images[0], pos, v2(50.0f, 50.0f), os_get_time(), v2(25.0f, 25.0f));
         gfx_draw_text("hello world!", v2(100.0f, 100.0f), 0.3f, v4_one());
         gfx_end();
 

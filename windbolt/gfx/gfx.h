@@ -54,6 +54,8 @@ global void gfx_font_init(const char *font_path);
 global void gfx_draw_rect(Vec2 position, Vec2 size, Vec4 color);
 global void gfx_draw_sprite(Gfx_Image image, Vec2 position, Vec2 size);
 global void gfx_draw_text(const char *text, Vec2 position, f32 scale, Vec4 color);
-// TODO(smoke): add rotation
+global void gfx_draw_rect_ex(Vec2 position, Vec2 size, Vec4 color, f32 rotation, Vec2 origin);
+global void gfx_draw_sprite_ex(Gfx_Image image, Vec2 position, Vec2 size, f32 rotation, Vec2 origin);
+// NOTE(smoke): rotating text?
 
 #endif // GFX_H
