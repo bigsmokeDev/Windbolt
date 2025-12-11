@@ -168,9 +168,9 @@ typedef enum
 
 typedef struct
 {
-	OS_InputKey keys[OS_MAX_KEYS];
-	OS_InputMouseButton mouse_buttons[OS_MAX_MOUSE_BUTTONS];
-	f32 mouse_x, mouse_y;
+    OS_InputKey keys[OS_MAX_KEYS];
+    OS_InputMouseButton mouse_buttons[OS_MAX_MOUSE_BUTTONS];
+    f32 mouse_x, mouse_y;
 } OS_InputState;
 
 // NOTE(smoke): copies input_state to previous_input_state,

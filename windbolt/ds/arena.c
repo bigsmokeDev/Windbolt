@@ -7,7 +7,7 @@ Arena arena_create(size_t capacity)
     
     arena.data = ARENA_MALLOC(capacity);
     ARENA_ASSERT(arena.data, "arena_create: ARENA_MALLOC has return NULL");
-	arena_reset(&arena);
+    arena_reset(&arena);
     
     arena.capacity = capacity;
     return arena;
@@ -31,5 +31,5 @@ void* arena_alloc(Arena *arena, size_t size)
 
 void arena_reset(Arena *arena)
 {
-	memset(arena->data, 0, arena->capacity);
+    memset(arena->data, 0, arena->capacity);
 }

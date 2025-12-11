@@ -9,7 +9,7 @@
 // vector 2
 typedef struct
 {
-	f32 x, y;
+    f32 x, y;
 } Vec2;
 #define v2(x,y) (Vec2){ x, y }
 #define v2_zero() (Vec2){ 0 }
@@ -20,7 +20,7 @@ Vec2 vec2_sub(Vec2 a, Vec2 b);
 Vec2 vec2_scale(Vec2 vec, f32 scale);
 Vec2 vec2_mul(Vec2 a, Vec2 b);
 Vec2 vec2_div(Vec2 a, Vec2 b);
-f32	 vec2_len(Vec2 vec);
+f32  vec2_len(Vec2 vec);
 Vec2 vec2_norm(Vec2 vec);
 f32  vec2_dot(Vec2 a, Vec2 b);
 
@@ -28,7 +28,7 @@ f32  vec2_dot(Vec2 a, Vec2 b);
 // vector 4
 typedef struct
 {
-	f32 x, y, z, w;
+    f32 x, y, z, w;
 } Vec4;
 #define v4(x,y,z,w) (Vec4){ x, y, z, w }
 #define v4_zero() (Vec4){ 0 }
@@ -39,7 +39,7 @@ Vec4 vec4_sub(Vec4 a, Vec4 b);
 Vec4 vec4_scale(Vec4 vec, f32 scale);
 Vec4 vec4_mul(Vec4 a, Vec4 b);
 Vec4 vec4_div(Vec4 a, Vec4 b);
-f32	 vec4_len(Vec4 vec);
+f32  vec4_len(Vec4 vec);
 Vec4 vec4_norm(Vec4 vec);
 f32  vec4_dot(Vec4 a, Vec4 b);
 
@@ -47,10 +47,10 @@ f32  vec4_dot(Vec4 a, Vec4 b);
 // 4x4 matrix
 typedef struct
 {
-	float m0,  m1,  m2,  m3;
-	float m4,  m5,  m6,  m7;
-	float m8,  m9,  m10, m11;
-	float m12, m13, m14, m15;
+    float m0,  m1,  m2,  m3;
+    float m4,  m5,  m6,  m7;
+    float m8,  m9,  m10, m11;
+    float m12, m13, m14, m15;
 } Mat4;
 
 Mat4 mat4_identity(void);

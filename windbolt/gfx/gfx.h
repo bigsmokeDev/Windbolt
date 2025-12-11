@@ -11,9 +11,9 @@
 // image
 typedef struct
 {
-	u8 *pixels;
-	u32 width, height;
-	Vec4 uv; // NOTE(smoke): for sprite atlas
+    u8 *pixels;
+    u32 width, height;
+    Vec4 uv; // NOTE(smoke): for sprite atlas
 } Gfx_Image;
 
 global Gfx_Image gfx_image_create(Arena *arena, const char *image_path);
@@ -22,10 +22,10 @@ global Gfx_Image gfx_image_create(Arena *arena, const char *image_path);
 // 2d renderer
 typedef struct
 {
-	Vec2 position;
-	Vec4 color;
-	Vec2 uv;
-	f32 tex_id;
+    Vec2 position;
+    Vec4 color;
+    Vec2 uv;
+    f32 tex_id;
 } Gfx_Vertex;
 typedef Gfx_Vertex Gfx_Quad[4];
 
@@ -35,9 +35,9 @@ typedef Gfx_Vertex Gfx_Quad[4];
 
 typedef struct
 {
-	Mat4 proj;
-	Vec2 position;
-	f32 zoom, rotation;
+    Mat4 proj;
+    Vec2 position;
+    f32 zoom, rotation;
 } Gfx_Camera;
 
 global void gfx_init(void);

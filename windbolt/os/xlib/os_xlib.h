@@ -9,12 +9,12 @@
 
 typedef struct
 {
-	Display *dpy;
-	s32 screen;
-	Window window, root_window;
-	Colormap colormap;
-	Visual *visual;
-	Atom wm_delete_window;
+    Display *dpy;
+    s32 screen;
+    Window window, root_window;
+    Colormap colormap;
+    Visual *visual;
+    Atom wm_delete_window;
 } OS_XlibBackendData;
 OS_XlibBackendData os = {0};
 

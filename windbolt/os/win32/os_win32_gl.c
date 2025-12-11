@@ -124,12 +124,12 @@ void os_gfx_shutdown(void)
 {
     wglMakeCurrent(0, 0);
     if (gl_context)
-	{
+    {
         wglDeleteContext(gl_context);
         gl_context = NULL;
     }
     if (dc)
-	{
+    {
         ReleaseDC(os.window, dc);
         dc = NULL;
     }

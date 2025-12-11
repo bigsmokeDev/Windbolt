@@ -6,7 +6,7 @@
 
 typedef struct
 {
-	HWND window;
+    HWND window;
 } OS_Win32BackendData;
 OS_Win32BackendData os = {0};
 
