@@ -8,5 +8,5 @@
 
 #include "glad/glad.c"
 
-#define MINIAUDIO_IMPLEMTATION
+#define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio/miniaudio.h"
