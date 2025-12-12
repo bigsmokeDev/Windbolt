@@ -3,7 +3,7 @@ CC = clang
 CFLAGS = -std=c99 -Wall -Iwindbolt -D_GNU_SOURCE
 LDFLAGS = -lX11 -lGLX -lGL -lm
 
-DEBUG_FLAGS = -O0 -g
+DEBUG_FLAGS = -O0 -glldb
 RELEASE_FLAGS = -O3 -DNDEBUG
 
 all: debug

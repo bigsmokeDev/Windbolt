@@ -5,6 +5,7 @@
 #include "stb/stb_rect_pack.h"
 #define STB_TRUETYPE_IMPLEMENTATION
 #include "stb/stb_truetype.h"
+#include "stb/stb_vorbis.c"
 
 #include "glad/glad.c"
 

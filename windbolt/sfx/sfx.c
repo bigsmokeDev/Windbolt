@@ -1,6 +1,9 @@
 #include "base.h"
 #include "sfx.h"
 
+#define STB_VORBIS_HEADER_ONLY
+#include "vendor/stb/stb_vorbis.c"
+
 local ma_engine engine;
 
 void sfx_init(void)
@@ -16,7 +19,7 @@ void sfx_shutdown(void)
 
 void sfx_sound_init(Sfx_Sound *sound, const char *sound_path)
 {
-    ma_result result = ma_sound_init_from_file(&engine, sound_path, 0, 0, 0, sound);
+    ma_result result = ma_sound_init_from_file(&engine, sound_path, 0, NULL, NULL, sound);
     ASSERT(result == MA_SUCCESS, "failed to load %s, ma_result: %d\n", sound_path, result);
 }
 

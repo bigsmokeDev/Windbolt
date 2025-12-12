@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     sfx_init();
     Sfx_Sound peace;
-    sfx_sound_init(&peace, "res/peace.flac");
+    sfx_sound_init(&peace, "res/peace.ogg");
     sfx_sound_play(&peace);
 
     while (!os_window_should_close())

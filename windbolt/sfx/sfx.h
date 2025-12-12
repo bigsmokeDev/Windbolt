@@ -4,7 +4,6 @@
 #include "types.h"
 
 #include "vendor/miniaudio/miniaudio.h"
-// TODO(smoke): add vorbis support
 
 global void sfx_init(void);
 global void sfx_shutdown(void);
