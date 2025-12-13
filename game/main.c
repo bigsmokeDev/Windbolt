@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
     sfx_sound_init(&peace, "res/peace.ogg");
     sfx_sound_play(&peace);
 
+
     while (!os_window_should_close())
     {
         os_window_poll_events();
@@ -41,6 +42,7 @@ int main(int argc, char *argv[])
         pos.y += (os_input_key_is_down(OS_KEY_S) - os_input_key_is_down(OS_KEY_W)) * 100.0f * delta_time;
         if (os_input_mouse_button_is_pressed(OS_MOUSE_BUTTON_LEFT))
             os_input_mouse_position_get(&pos.x, &pos.y);
+        sfx_sound_set_position(&peace, vec2_scale(pos, 0.1f));
 
         gfx_clear(v4(0.2f, 0.2f, 0.2f, 1.0f));
         gfx_resize();

@@ -3,8 +3,6 @@
 #include "gfx/gfx.h"
 #include "shader_gl.h"
 
-#include <stddef.h>
-
 #include "vendor/stb/stb_rect_pack.h"
 #include "vendor/stb/stb_truetype.h"
 
