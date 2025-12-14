@@ -93,6 +93,12 @@ void os_gfx_init(void)
     gladLoadGL();
 }
 
+void os_gfx_shutdown(void)
+{
+    glXMakeCurrent(os.dpy, None, NULL);
+    glXDestroyContext(os.dpy, glx_context);
+}
+
 void os_gfx_swap_buffers(void)
 {
     glXSwapBuffers(os.dpy, os.window);

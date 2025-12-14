@@ -147,7 +147,7 @@ void os_window_init(u32 width, u32 height, const char *title)
 
 void os_window_shutdown(void)
 {
-    // TODO(smoke)
+    DestroyWindow(os.window);
 }
 
 bool os_window_should_close(void)

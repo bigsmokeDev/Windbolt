@@ -36,7 +36,12 @@ f32 vec2_len(Vec2 vec)
 Vec2 vec2_norm(Vec2 vec)
 {
     const f32 length = vec2_len(vec);
-    return v2(vec.x / length, vec.y / length);
+    if (length != 0.0f)
+    {
+        const f32 inv_length = 1.0f / length;
+        return v2(vec.x * inv_length, vec.y * inv_length);
+    }
+    return v2_zero();
 }
 
 f32 vec2_dot(Vec2 a, Vec2 b)
@@ -45,7 +50,7 @@ f32 vec2_dot(Vec2 a, Vec2 b)
 }
 
 ////////////
-// vector 2
+// vector 4
 Vec4 vec4_add(Vec4 a, Vec4 b)
 {
     return v4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
@@ -79,7 +84,12 @@ f32 vec4_len(Vec4 vec)
 Vec4 vec4_norm(Vec4 vec)
 {
     const f32 length = vec4_len(vec);
-    return v4(vec.x / length, vec.y / length, vec.z / length, vec.w / length);
+    if (length != 0.0f)
+    {
+        const f32 inv_length = 1.0f / length;
+        return v4(vec.x * inv_length, vec.y * inv_length, vec.z * inv_length, vec.w * inv_length);
+    }
+    return v4_zero();
 }
 
 f32 vec4_dot(Vec4 a, Vec4 b)

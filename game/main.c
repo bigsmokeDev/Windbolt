@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
     sfx_sound_init(&peace, "res/peace.ogg");
     sfx_sound_play(&peace);
 
-
     while (!os_window_should_close())
     {
         os_window_poll_events();
@@ -49,7 +48,8 @@ int main(int argc, char *argv[])
 
         gfx_begin(&camera);
         gfx_draw_sprite_ex(images[0], pos, v2(50.0f, 50.0f), os_get_time(), v2(25.0f, 25.0f));
-        gfx_draw_text("hello world!", v2(100.0f, 100.0f), 0.3f, v4_one());
+        gfx_draw_text("hello world!", v2(100.0f, 100.0f), 0.3f, v4(1.0f, 0.0f, 0.0f, 1.0f));
+
         gfx_end();
 
         os_gfx_swap_buffers();
@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
     }
 
     sfx_shutdown();
+    os_gfx_shutdown();
     os_window_shutdown();
     return 0;
 }

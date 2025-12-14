@@ -2,7 +2,6 @@
 #define SFX_H
 
 #include "types.h"
-#include "linmath/linmath.h"
 
 #include "vendor/miniaudio/miniaudio.h"
 
