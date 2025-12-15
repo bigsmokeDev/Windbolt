@@ -1,9 +1,14 @@
 #include "linmath.h"
 #include <math.h>
 
-local inline f32 lerp(f32 start, f32 end, f32 amount)
+f32 lerp(f32 start, f32 end, f32 amount)
 {
     return start + amount * (end - start);
+}
+
+f32 smoothstep(f32 start, f32 end, f32 t)
+{
+    return lerp(end, start, powf(0.5f, t * 1.5f));
 }
 
 ////////////
@@ -57,6 +62,11 @@ f32 vec2_dot(Vec2 a, Vec2 b)
 Vec2 vec2_lerp(Vec2 start, Vec2 end, f32 amount)
 {
     return v2(lerp(start.x, end.x, amount), lerp(start.y, end.y, amount));
+}
+
+Vec2 vec2_smoothstep(Vec2 start, Vec2 end, f32 t)
+{
+    return vec2_lerp(end, start, powf(0.5f, t * 1.5f));
 }
 
 ////////////
@@ -125,6 +135,11 @@ Vec4 vec4_lerp(Vec4 start, Vec4 end, f32 amount)
             lerp(start.z, end.z, amount),
             lerp(start.w, end.w, amount)
             );
+}
+
+Vec4 vec4_smoothstep(Vec4 start, Vec4 end, f32 t)
+{
+    return vec4_lerp(end, start, powf(0.5f, t * 1.5f));
 }
 
 //////////////

@@ -5,6 +5,9 @@
 
 #include "types.h"
 
+global f32 lerp(f32 start, f32 end, f32 amount);
+global f32 smoothstep(f32 start, f32 end, f32 t);
+
 ////////////
 // vector 2
 typedef struct
@@ -24,6 +27,7 @@ global f32  vec2_len(Vec2 vec);
 global Vec2 vec2_norm(Vec2 vec);
 global f32  vec2_dot(Vec2 a, Vec2 b);
 global Vec2 vec2_lerp(Vec2 start, Vec2 end, f32 amount);
+global Vec2 vec2_smoothstep(Vec2 start, Vec2 end, f32 t);
 
 ////////////
 // vector 4
@@ -44,6 +48,7 @@ global f32  vec4_len(Vec4 vec);
 global Vec4 vec4_norm(Vec4 vec);
 global f32  vec4_dot(Vec4 a, Vec4 b);
 global Vec4 vec4_lerp(Vec4 start, Vec4 end, f32 amount);
+global Vec4 vec4_smoothstep(Vec4 start, Vec4 end, f32 t);
 
 //////////////
 // 4x4 matrix
