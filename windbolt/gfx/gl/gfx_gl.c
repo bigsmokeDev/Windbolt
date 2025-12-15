@@ -94,8 +94,7 @@ void gfx_begin(Gfx_Camera *camera)
     u32 width, height;
     os_window_get_size(&width, &height);
 
-    camera->proj = mat4_ortho(0.0f, (f32)width, 0.0f, (f32)height, -1.0f, 1.0f);
-    camera->proj = mat4_scale(camera->proj, v2(camera->zoom, camera->zoom));
+    camera->proj = mat4_ortho(0.0f, (f32)width * camera->zoom, 0.0f, (f32)height * camera->zoom, -1.0f, 1.0f);
     camera->proj = mat4_rotate_z(camera->proj, camera->rotation);
     camera->proj = mat4_translate(camera->proj, v2(-camera->position.x, -camera->position.y));
     glUniformMatrix4fv(gfx_data.proj_loc, 1, GL_FALSE, &camera->proj.m0);
