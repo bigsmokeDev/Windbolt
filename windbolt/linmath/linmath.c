@@ -1,6 +1,11 @@
 #include "linmath.h"
 #include <math.h>
 
+local inline f32 lerp(f32 start, f32 end, f32 amount)
+{
+    return start + amount * (end - start);
+}
+
 ////////////
 // vector 2
 Vec2 vec2_add(Vec2 a, Vec2 b)
@@ -47,6 +52,11 @@ Vec2 vec2_norm(Vec2 vec)
 f32 vec2_dot(Vec2 a, Vec2 b)
 {
     return (a.x * b.x) + (a.y * b.y);
+}
+
+Vec2 vec2_lerp(Vec2 start, Vec2 end, f32 amount)
+{
+    return v2(lerp(start.x, end.x, amount), lerp(start.y, end.y, amount));
 }
 
 ////////////
@@ -105,6 +115,16 @@ Vec4 vec4_mul_mat4(Vec4 vec, Mat4 mat)
     result.z = mat.m2*vec.x + mat.m6*vec.y + mat.m10*vec.z + mat.m14*vec.w;
     result.w = mat.m3*vec.x + mat.m7*vec.y + mat.m11*vec.z + mat.m15*vec.w;
     return result;
+}
+
+Vec4 vec4_lerp(Vec4 start, Vec4 end, f32 amount)
+{
+    return v4(
+            lerp(start.x, end.x, amount),
+            lerp(start.y, end.y, amount),
+            lerp(start.z, end.z, amount),
+            lerp(start.w, end.w, amount)
+            );
 }
 
 //////////////

@@ -23,6 +23,7 @@ global Vec2 vec2_div(Vec2 a, Vec2 b);
 global f32  vec2_len(Vec2 vec);
 global Vec2 vec2_norm(Vec2 vec);
 global f32  vec2_dot(Vec2 a, Vec2 b);
+global Vec2 vec2_lerp(Vec2 start, Vec2 end, f32 amount);
 
 ////////////
 // vector 4
@@ -42,6 +43,7 @@ global Vec4 vec4_div(Vec4 a, Vec4 b);
 global f32  vec4_len(Vec4 vec);
 global Vec4 vec4_norm(Vec4 vec);
 global f32  vec4_dot(Vec4 a, Vec4 b);
+global Vec4 vec4_lerp(Vec4 start, Vec4 end, f32 amount);
 
 //////////////
 // 4x4 matrix
